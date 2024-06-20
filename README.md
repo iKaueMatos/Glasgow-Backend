@@ -1,8 +1,8 @@
 # Projeto Glasgow
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/seu-usuario/seu-repositorio)](https://github.com/seu-usuario/seu-repositorio/issues)
-[![GitHub stars](https://img.shields.io/github/stars/seu-usuario/seu-repositorio)](https://github.com/seu-usuario/seu-repositorio/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/iKaueMatos/Glasgow)](https://github.com/iKaueMatos/Glasgow/issues)
+[![GitHub stars](https://img.shields.io/github/stars/iKaueMatos/Glasgow)](https://github.com/iKaueMatos/Glasgow/stargazers)
 
 ## Visão Geral
 
