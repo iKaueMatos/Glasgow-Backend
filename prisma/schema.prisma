@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Address {
+  id         Int       @id @default(autoincrement())
+  street     String    @db.VarChar(255)
+  city       String    @db.VarChar(100)
+  state      String    @db.VarChar(100)
+  postalCode String    @db.VarChar(20)
+  country    String    @db.VarChar(100)
+  patients   Patient[]
+}
+
+model Patient {
+  id            Int                @id @default(autoincrement())
+  name          String             @db.VarChar(100)
+  dateOfBirth   DateTime
+  gender        String             @db.Char(1)
+  email         String             @db.VarChar(100)
+  phone         String             @db.VarChar(15)
+  addressId     Int
+  doctorId      Int
+  address       Address            @relation(fields: [addressId], references: [id])
+  doctor        Doctor             @relation(fields: [doctorId], references: [id])
+  measurements  Measurement[]
+  exams         Exam[]
+  prescriptions Prescription[]
+  alerts        Alert[]
+  interactions  Interaction[]
+  consultations Consultation[]
+  conditions    PatientCondition[]
+  notifications Notification[]
+
+  @@index([addressId])
+  @@index([doctorId])
+}
+
+model Doctor {
+  id            Int            @id @default(autoincrement())
+  name          String         @db.VarChar(100)
+  specialty     String         @db.VarChar(100)
+  email         String         @db.VarChar(100)
+  phone         String         @db.VarChar(15)
+  patients      Patient[]
+  consultations Consultation[]
+}
+
+model Measurement {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  type      String   @db.VarChar(50)
+  value     Float
+  timestamp DateTime
+  patient   Patient  @relation(fields: [patientId], references: [id])
+
+  @@index([patientId])
+}
+
+model Exam {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  type      String   @db.VarChar(50)
+  result    String   @db.Text
+  examDate  DateTime
+  category  String   @db.VarChar(50)
+  patient   Patient  @relation(fields: [patientId], references: [id])
+
+  @@index([patientId])
+}
+
+model Prescription {
+  id           Int        @id @default(autoincrement())
+  patientId    Int
+  medicationId Int
+  dosage       String     @db.VarChar(50)
+  frequency    String     @db.VarChar(50)
+  startDate    DateTime
+  endDate      DateTime
+  patient      Patient    @relation(fields: [patientId], references: [id])
+  medication   Medication @relation(fields: [medicationId], references: [id])
+
+  @@index([patientId])
+  @@index([medicationId])
+}
+
+model Alert {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  type      String   @db.VarChar(50)
+  message   String   @db.Text
+  timestamp DateTime
+  patient   Patient  @relation(fields: [patientId], references: [id])
+
+  @@index([patientId])
+}
+
+model Food {
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(100)
+  condition String @db.VarChar(50)
+  impact    String @db.VarChar(255)
+}
+
+model Interaction {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  question  String   @db.Text
+  answer    String   @db.Text
+  timestamp DateTime
+  patient   Patient  @relation(fields: [patientId], references: [id])
+
+  @@index([patientId])
+}
+
+model Medication {
+  id            Int            @id @default(autoincrement())
+  name          String         @db.VarChar(100)
+  manufacturer  String         @db.VarChar(100)
+  description   String         @db.Text
+  prescriptions Prescription[]
+}
+
+model Consultation {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  doctorId  Int
+  timestamp DateTime
+  type      String   @db.VarChar(50)
+  notes     String   @db.Text
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  doctor    Doctor   @relation(fields: [doctorId], references: [id])
+
+  @@index([patientId])
+  @@index([doctorId])
+}
+
+model MedicalCondition {
+  id          Int                @id @default(autoincrement())
+  name        String             @db.VarChar(100)
+  description String             @db.Text
+  conditions  PatientCondition[]
+}
+
+model PatientCondition {
+  id                 Int              @id @default(autoincrement())
+  patientId          Int
+  medicalConditionId Int
+  diagnosisDate      DateTime
+  patient            Patient          @relation(fields: [patientId], references: [id])
+  medicalCondition   MedicalCondition @relation(fields: [medicalConditionId], references: [id])
+
+  @@index([patientId])
+  @@index([medicalConditionId])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  type      String   @db.VarChar(50)
+  message   String   @db.Text
+  timestamp DateTime
+  patient   Patient  @relation(fields: [patientId], references: [id])
+
+  @@index([patientId])
+}
