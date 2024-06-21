@@ -13,10 +13,10 @@ const getAllAddressController = new GetAllAddressController();
 const getAddressByIdController = new GetAddressByIdController();
 const createdAddressController = new CreatedAddressController();
 
-router.post('/addresses', (req, res) => createdAddressController.handle(req, res));
-router.get('/addresses/:id', (req, res) => getAddressByIdController.handle(req, res));
-router.get('/addresses', (req, res) => getAllAddressController.handle(req, res));
-router.put('/addresses/:id', (req, res) => updateAddressController.handle(req, res));
-router.delete('/addresses/:id', (req, res) => deleteAddressController.handle(req, res));
+router.post('/create', (req, res) => createdAddressController.handle(req, res));
+router.put('/update/:id', (req, res) => updateAddressController.handle(req, res));
+router.get('/getId/:id', (req, res) => getAddressByIdController.handle(req, res));
+router.get('/getAll', (req, res) => getAllAddressController.handle(req, res));
+router.delete('/delete/:id', (req, res) => deleteAddressController.handle(req, res));
 
 export default router;
