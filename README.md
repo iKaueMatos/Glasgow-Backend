@@ -28,7 +28,7 @@ Liste todos os pré-requisitos necessários para rodar o projeto localmente, com
 - `NODE_ENV`: Ambiente de execução do Node.js (`development`, `production`, etc.)
 - `DB_HOST`: Host do banco de dados MySQL
 - `DB_PORT`: Porta do banco de dados MySQL
-- `DB_DATABASE_NAME`: Nome do banco de dados MySQL
+- `DB_DATABASE`: Nome do banco de dados MySQL
 - `DB_USER`: Usuário do banco de dados MySQL
 - `DB_PASSWORD`: Senha do usuário do banco de dados MySQL
 - `DATABASE_URL`: URL de conexão com o banco de dados MySQL
@@ -36,7 +36,7 @@ Liste todos os pré-requisitos necessários para rodar o projeto localmente, com
 
 ### Instalação
 
-1. Clone o repositório: `git clone https://github.com/seu-usuario/seu-repositorio.git`
+1. Clone o repositório: `git clone https://github.com/iKaueMatos/Glasgow`
 2. Instale as dependências: `npm install`
 
 ### Executando o Projeto
