@@ -1,5 +1,5 @@
 import { IAddress } from "../../../models/IAddress";
-import { AddressRepository } from "../repositories/addressRepository";
+import { AddressRepository } from "../repositories/AddressRepository";
 
 export class AddressService {
   constructor(private addressRepository: AddressRepository) {}

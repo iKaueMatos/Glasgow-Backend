@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
-    "start:prod": "NODE_ENV=production nodemon --exec ts-node src/index.ts"
+    "prisma-migrate-dev": "npx prisma migrate generate && npx prisma migrate deploy",
+    "start:dev": "NODE_ENV=development nodemon --exec ts-node src/app.ts",
+    "start:prod": "NODE_ENV=production nodemon --exec ts-node src/app.ts"
   },
   "keywords": [],
   "author": "",

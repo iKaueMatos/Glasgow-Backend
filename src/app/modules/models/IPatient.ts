@@ -28,4 +28,3 @@ export interface IPatient {
   conditions: IPatientCondition[];
   notifications: INotification[];
 }
-

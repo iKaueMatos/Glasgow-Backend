@@ -1,13 +1,13 @@
 import { IPatient } from "./IPatient";
 
 export enum TypeMeasurement {
-  Frequencia_Cardiaca,
-  Temperatura,
-  Frequencia_Respiratoria,
-  Pressao_Arterial,
-  Dor,
-  Glicemia_Capilar,
-  Saturacao_Oxigenio,
+ Heart_Rate,
+ Temperature,
+ Respiratory_frequency,
+ Blood_pressure,
+ Pain,
+ Capillary_Glycemia,
+ Oxygen_Saturation,
 }
 
 export interface IMeasurement {

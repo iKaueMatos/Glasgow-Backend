@@ -1,5 +1,5 @@
 import { IAddress } from "../../../models/IAddress";
-import { AddressService } from "../../domain/service/addressService";
+import { AddressService } from "../../domain/service/AddressService";
 import { CreateAddressDTO } from "../dtos/CreatedAddressDTO";
 
 export class CreateAddressUseCase {
