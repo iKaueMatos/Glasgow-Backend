@@ -34,4 +34,13 @@ export class PatientService {
       throw new PatientServiceError(`Paciente não encontrado!: ${String(error)}`);
     }
   }
+
+  async findAll(): Promise<IPatient[]> {
+    try {
+      const patient = await this.patientRepository.findAll();
+      return patient;
+    } catch (error) {
+      throw new PatientServiceError(`Pacientes não encontrados!: ${String(error)}`);
+    }
+  }
 }

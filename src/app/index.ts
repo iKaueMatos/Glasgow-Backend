@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import welcomeRouter from './routes/WelcomeRouter';
-import patientRouter from './modules/patient/interface/routes/PatientRouter';
+import welcomeRouter from './shared/infra/http/welcome.routes';
+import patientRouter from './shared/infra/http/patient.routes';
 
 const router = Router();
 

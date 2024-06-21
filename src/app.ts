@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { router } from './app/index'
-import { AppError } from './app/shared/AppError';
+import { AppError } from './app/shared/error/AppError';
 
 const app = express();
 
