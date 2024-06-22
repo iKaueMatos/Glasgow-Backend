@@ -25,6 +25,8 @@ services:
       npx prisma generate &&
       npx prisma migrate deploy &&
       npm run start:dev -- --preserveWatchOutput"
+    networks:
+      - glasgow-network
 
   db:
     image: mysql
@@ -36,3 +38,9 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - glasgow-network
+
+networks:
+  glasgow-network:
+    driver: bridge

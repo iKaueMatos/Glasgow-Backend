@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { CreatePatientDTO } from "../../dtos/CreatePatientDTO";
 import { CreatedPatientUseCase } from "./CreatedPatientUseCase";
-import { PatientRepository } from '../../../domain/repository/PatientRepository';
+import { PatientRepository } from '../../../infra/repository/PatientRepository';
 import { PatientService } from "../../../domain/services/PatientService";
+import { ResponseDTO } from "../../../../../shared/dtos/ResponseDTO";
 
 export class CreatedPatientController {
   private createdPatientUseCase: CreatedPatientUseCase;
@@ -15,9 +16,11 @@ export class CreatedPatientController {
     const data: CreatePatientDTO = req.body;
     try {
       const patient = await this.createdPatientUseCase.execute(data);
-      return res.status(201).json(patient);
+      const response = new ResponseDTO(true, 'Patient created successfully', patient);
+      return res.status(201).json(response);
     } catch (error: any) {
-      return res.status(400).json({ error: error.message });
+      const response = new ResponseDTO(false, error.message);
+      return res.status(400).json(response);
     }
   }
 }

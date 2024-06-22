@@ -51,6 +51,12 @@ Para rodar o projeto com Docker:
 1. Instale o Docker e o Docker Compose
 2. Execute: `docker-compose up`
 
+## Executando Migrações e Comandos do Prisma
+Para rodar uma migração ou qualquer comando relacionado ao Prisma, é necessário entrar no container da aplicação:
+
+1. Entre no container: `docker exec -it glasgow-api sh`
+2. Execute os comandos do Prisma, como `npx prisma migrate dev --name <Nome da migration>` 
+
 ## Funcionalidades
 
 (Em Desenvolvimento)

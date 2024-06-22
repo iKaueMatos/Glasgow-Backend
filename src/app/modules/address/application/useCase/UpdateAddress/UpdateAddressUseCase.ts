@@ -1,5 +1,5 @@
-import { IAddress } from "../../../../models/IAddress";
-import { AddressRepository } from "../../../domain/repositories/AddressRepository";
+import { IAddress } from "../../../domain/model/IAddress";
+import { AddressRepository } from "../../../infra/repositories/AddressRepository";
 import { AddressService } from "../../../domain/service/AddressService";
 
 export class UpdateAddressUseCase {

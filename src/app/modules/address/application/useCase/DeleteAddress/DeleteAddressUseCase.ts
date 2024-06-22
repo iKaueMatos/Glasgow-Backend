@@ -1,5 +1,5 @@
-import { IAddress } from "../../../../models/IAddress";
-import { AddressRepository } from "../../../domain/repositories/AddressRepository";
+import { IAddress } from "../../../domain/model/IAddress";
+import { AddressRepository } from "../../../infra/repositories/AddressRepository";
 import { AddressService } from "../../../domain/service/AddressService";
 
 export class DeleteAddressUseCase {
@@ -10,7 +10,7 @@ export class DeleteAddressUseCase {
     this.addressService = new AddressService(addressRepository)
   }
   
-  async execute(addressId: number): Promise<IAddress | null> {
+  async execute(addressId: number): Promise<void> {
     return this.addressService.deleteAddress(addressId);
   }
 }

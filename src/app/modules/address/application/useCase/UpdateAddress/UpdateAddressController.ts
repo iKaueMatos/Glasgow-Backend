@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IAddress } from '../../../../models/IAddress';
+import { IAddress } from '../../../domain/model/IAddress';
 import { UpdateAddressUseCase } from './UpdateAddressUseCase';
 
 export class UpdateAddressController {

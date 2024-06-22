@@ -1,9 +1,9 @@
-import { IPatient } from "../../../models/IPatient";
+import { IPatient } from "../model/IPatient";
 import { CreatePatientDTO } from "../../application/dtos/CreatePatientDTO";
 import { UpdatePatientDTO } from "../../application/dtos/UpdatePatientDTO";
 import { PatientServiceError } from "../../infra/exception/PatientException";
-import prisma from "../../infra/prisma/client";
-import { PatientRepository } from "../repository/PatientRepository";
+import prisma from "../../../notification/infra/prisma/client";
+import { PatientRepository } from "../../infra/repository/PatientRepository";
 
 export class PatientService {
   constructor(private patientRepository: PatientRepository) {}

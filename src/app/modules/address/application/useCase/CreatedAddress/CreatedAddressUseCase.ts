@@ -1,5 +1,5 @@
-import { IAddress } from "../../../../models/IAddress";
-import { AddressRepository } from "../../../domain/repositories/AddressRepository";
+import { IAddress } from "../../../domain/model/IAddress";
+import { AddressRepository } from "../../../infra/repositories/AddressRepository";
 import { AddressService } from "../../../domain/service/AddressService";
 import { CreateAddressDTO } from "../../dtos/CreatedAddressDTO";
 
@@ -12,6 +12,7 @@ export class CreatedAddressUseCase {
   }
 
   async execute(data: IAddress): Promise<CreateAddressDTO> {
-    return this.addressService.createAddress(data);
+    const createdAddress: CreateAddressDTO = await this.addressService.createAddress(data);
+    return createdAddress;
   }
 }
