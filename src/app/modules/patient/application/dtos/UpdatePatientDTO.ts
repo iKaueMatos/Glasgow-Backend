@@ -1,10 +1,10 @@
-import { IAddress } from "../../../models/IAddress";
+import { IAddress } from "../../../address/domain/model/IAddress";
 import { IConsultation } from "../../../models/IConsultation";
-import { IDoctor } from "../../../models/IDoctor";
+import { IDoctor } from "../../../doctor/domain/model/IDoctor";
 import { IExam } from "../../../models/IExam";
-import { IMeasurement } from "../../../models/IMeasurement";
+import { IMeasurement } from "../../../measurement/domain/model/IMeasurement";
 import { IPatientCondition } from "../../../models/IPatientCondition";
-import { IPrescription } from "../../../models/IPrescription";
+import { IPrescription } from "../../../prescription/domain/model/IPrescription";
 
 export interface UpdatePatientDTO {
   id?: number;

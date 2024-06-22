@@ -1,5 +1,5 @@
-import { IPatient } from "../../../../models/IPatient";
-import { PatientRepository } from "../../../domain/repository/PatientRepository";
+import { IPatient } from "../../../domain/model/IPatient";
+import { PatientRepository } from "../../../infra/repository/PatientRepository";
 import { PatientService } from "../../../domain/services/PatientService";
 import { CreatePatientDTO } from "../../dtos/CreatePatientDTO";
 

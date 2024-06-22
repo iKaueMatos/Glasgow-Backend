@@ -1,6 +1,6 @@
-import { IAddress } from '../../../../models/IAddress';
-import { IPatient } from '../../../../models/IPatient';
-import { PatientRepository } from '../../../domain/repository/PatientRepository';
+import { IAddress } from '../../../../address/domain/model/IAddress';
+import { IPatient } from '../../../domain/model/IPatient';
+import { PatientRepository } from '../../../infra/repository/PatientRepository';
 import { PatientService } from '../../../domain/services/PatientService';
 import { UpdatePatientDTO } from '../../dtos/UpdatePatientDTO';
 

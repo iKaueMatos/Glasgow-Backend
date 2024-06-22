@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { router } from './app/index'
-import { AppError } from './app/shared/error/AppError';
+import { AppError } from './app/core/exceptions/AppError';
 
 const app = express();
 
@@ -24,5 +24,5 @@ app.use(
 );
 
 app.listen(PORT, () => {
-  console.log(`O servidor está em execução http://localhost:${PORT}`);
+  console.log(`O servidor está em execução http://localhost:${PORT}/`);
 })
