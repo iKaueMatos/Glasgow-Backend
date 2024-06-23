@@ -5,7 +5,7 @@ import { IInteractionRepository } from "../../../infra/prisma/repositories/IInte
 import { CustomException } from "../../../../../shared/exceptions/CustomException";
 
 const openai = new OpenAI({
-  apiKey: "sk-proj-90IfsivTl3wIzfODXTdST3BlbkFJlosSqTWiqS9j0IGnGNcM",
+  apiKey: process.env.API_KEY,
 });
 
 export class CreatedInteractionUseCase {
