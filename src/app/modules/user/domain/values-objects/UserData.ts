@@ -1,25 +1,25 @@
-import { hash } from "bcrypt";
+import { hash } from "bcryptjs";
 import { CustomException } from "../../../../shared/exceptions/CustomException";
 import { ICreateUserDTO } from "../../application/dtos/ICreatedUserDTO";
 
 export class UserData {
   name: string;
   email: string;
-  passwordHash: string = '';
+  passwordHash: string;
+  phone: string;
 
-  constructor({ name, email, password }: ICreateUserDTO) {
+  private constructor({ name, email, passwordHash, phone }: { name: string; email: string; passwordHash: string; phone: string }) {
     this.validateName(name);
     this.validateEmail(email);
     this.name = name.trim();
+    this.phone = phone.trim();
     this.email = email.trim().toLowerCase();
+    this.passwordHash = passwordHash;
+  }
 
-    this.hashPassword(password)
-      .then((hashedPassword) => {
-        this.passwordHash = hashedPassword;
-      })
-      .catch((error) => {
-        throw new CustomException('Erro ao criar usuário', 'Erro ao processar a senha');
-      });
+  static async create({ name, email, password, phone }: ICreateUserDTO): Promise<UserData> {
+    const passwordHash = await hash(password, 8);
+    return new UserData({ name, email, passwordHash, phone });
   }
 
   private validateName(name: string): void {
@@ -32,9 +32,5 @@ export class UserData {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new CustomException('Erro de validação', 'Email inválido');
     }
-  }
-
-  private async hashPassword(password: string): Promise<string> {
-    return await hash(password, 8);
   }
 }

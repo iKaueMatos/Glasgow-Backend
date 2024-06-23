@@ -10,6 +10,7 @@ export interface IUser {
   isAdmin: boolean;
   avatar: string | null;
   created_at: Date;
+  phone?: string;
   patients?: IPatient[];
   consultations?: IConsultation[];
   userTokens?: IUserToken[];

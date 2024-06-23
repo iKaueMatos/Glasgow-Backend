@@ -1,4 +1,3 @@
-import { hash } from "bcrypt";
 import { CustomException } from "../../../../../shared/exceptions/CustomException";
 import { container } from "tsyringe";
 import { UserRepository } from "../../../infra/repository/UserRepository";
@@ -12,10 +11,10 @@ export class UserCreatedUseCase {
     name,
     email,
     password,
+    phone
   }: ICreateUserDTO): Promise<IUser> {
       try {
-        const userData = new UserData({ name, email, password });
-  
+        const userData = await UserData.create({ name, email, password, phone });
         const userRepository = container.resolve(UserRepository);
         const userAlreadyExists = await userRepository.findByEmail(userData.email);
   
@@ -28,12 +27,13 @@ export class UserCreatedUseCase {
           name: userData.name,
           email: userData.email,
           password: userData.passwordHash,
+          phone: userData.phone
         });
       } catch (error: any) {
         if (error instanceof CustomException) {
           throw error;
         } else {
-          throw new CustomException('Erro interno do servidor', 'Erro ao processar a requisição');
+          throw new CustomException('Erro interno do servidor', `${error}`);
         }
       }
   }
