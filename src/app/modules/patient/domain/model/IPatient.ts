@@ -1,12 +1,12 @@
 import { IDoctor } from "../../../doctor/domain/model/IDoctor";
 import { IAddress } from "../../../address/domain/model/IAddress";
 import { IMeasurement } from "../../../measurement/domain/model/IMeasurement";
-import { IExam } from "../../../models/IExam";
 import { IPrescription } from "../../../prescription/domain/model/IPrescription";
 import { Iinteraction } from "../../../Interaction/domain/model/Iinteraction";
-import { IConsultation } from "../../../models/IConsultation";
-import { INotification } from "../../../models/INotification";
-import { IPatientCondition } from "./IPatientCondition";
+import { IExam } from "../../../exam/domain/model/IExam";
+import { IConsultation } from "../../../consultation/domain/model/IConsultation";
+import { IPatientCondition } from "../../../patientCondition/domain/model/IPatientCondition";
+import { INotification } from "../../../notification/domain/model/INotification";
 
 export interface IPatient {
   id: number;

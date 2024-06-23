@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express, { NextFunction, Request, Response } from 'express';
 import { router } from './app/index'
 import { AppError } from './app/core/exceptions/AppError';

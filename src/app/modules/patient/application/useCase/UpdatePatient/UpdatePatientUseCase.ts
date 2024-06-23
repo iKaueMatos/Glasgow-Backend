@@ -1,19 +1,15 @@
 import { IAddress } from '../../../../address/domain/model/IAddress';
 import { IPatient } from '../../../domain/model/IPatient';
 import { PatientRepository } from '../../../infra/repository/PatientRepository';
-import { PatientService } from '../../../domain/services/PatientService';
+import { PatientService } from '../../../domain/services/Patient.Service';
 import { UpdatePatientDTO } from '../../dtos/UpdatePatientDTO';
+import { resolve } from 'path';
+import { container } from 'tsyringe';
 
 export class UpdatePatientUseCase {
-  private patientService :  PatientService
-
-  constructor() {
-    const patientRepository : PatientRepository = new PatientRepository();
-    this.patientService = new PatientService(patientRepository);
-  }
-
   async execute(patientId: number, data: UpdatePatientDTO): Promise<UpdatePatientDTO | null> {
-    const existingPatient = await this.patientService.getPatientById(patientId);
+    const patientService = container.resolve(PatientService);
+    const existingPatient = await patientService.getPatientById(patientId);
 
     if (!existingPatient) {
       throw new Error(`paciente com id: ${patientId} não foi encontrado!`);
@@ -29,6 +25,6 @@ export class UpdatePatientUseCase {
       address: data.address ?? existingPatient.address,
     };
 
-    return this.patientService.updatePatient(patientId, patientDataToUpdate);
+    return patientService.updatePatient(patientId, patientDataToUpdate);
   }
 }

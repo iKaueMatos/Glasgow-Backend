@@ -3,19 +3,18 @@ import { CustomException } from "../../../../shared/exceptions/CustomException";
 import { UserRepository } from "../../../user/infra/infra/repository/UserRepository";
 import { UserRepositoryToken } from "../../../user/infra/infra/repository/UserRepositoryToken";
 import { resolve } from 'path';
-import { UUID as uuidV4, UUID, randomUUID } from 'crypto';
+import { randomUUID } from 'crypto';
 import { EtherealMailProvider } from "../../../../shared/container/providers/MailProvider/implementations/EtherealMailProvider";
-import { MailProviderInMemory } from "../../../../shared/container/providers/MailProvider/in-memory/MailProviderInMemory";
+import { container } from "tsyringe";
 
 export class AuthServiceSendForgotPassword {
   dateProvider: DayjsDateProvider = new DayjsDateProvider();
-  usersRepository: UserRepository = new UserRepository();
-  usersRepositoryToken: UserRepositoryToken = new UserRepositoryToken();
   mailProvider: EtherealMailProvider = new EtherealMailProvider;
   
   async sendForgotPassword(email: string): Promise<void> {
     try {
-      const user = await this.usersRepository.findByEmail(email);
+      const userRepository = container.resolve(UserRepository);
+      const user = await userRepository.findByEmail(email);
   
       if (!user) {
         throw new CustomException("Erro", "Usuário não encontrado");
@@ -34,10 +33,11 @@ export class AuthServiceSendForgotPassword {
   }
 
   private async createPasswordResetToken(token: string, userId: number, expiresDate: Date): Promise<void> {
-    await this.usersRepositoryToken.create({
-      refreshToken: token,
-      userId: userId,
-      expiresDate: expiresDate,
+    const userTokenRepository = container.resolve(UserRepositoryToken);
+    await userTokenRepository.create({
+      refresh_token: token,
+      user_id: userId,
+      expires_date: expiresDate,
     });
   }
   

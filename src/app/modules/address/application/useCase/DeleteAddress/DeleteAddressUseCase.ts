@@ -1,6 +1,6 @@
 import { IAddress } from "../../../domain/model/IAddress";
 import { AddressRepository } from "../../../infra/repositories/AddressRepository";
-import { AddressService } from "../../../domain/service/AddressService";
+import { AddressService } from "../../../domain/service/Address.Service";
 
 export class DeleteAddressUseCase {
   private addressService: AddressService

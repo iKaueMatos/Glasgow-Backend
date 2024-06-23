@@ -1,12 +1,10 @@
-import { resolve } from "path";
 import { CustomException } from "../../../../../shared/exceptions/CustomException";
-import { DayjsDateProvider } from "../../../../../shared/container/providers/DateProvider/implementations/DayjsDateProvider";
-import { UserRepository } from '../../../../user/infra/infra/repository/UserRepository';
-import { UserRepositoryToken } from "../../../../user/infra/infra/repository/UserRepositoryToken";
-import { AuthServiceSendForgotPassword } from '../../../domain/service/AuthServiceSendForgotPassword';
+import { AuthServiceSendForgotPassword } from '../../../domain/service/AuthSendForgotPassword.Service';
 
 export class SendForgotPassordMailUseCase {
-  constructor(private authServiceSendForgotPassword: AuthServiceSendForgotPassword) {}
+  authServiceSendForgotPassword: AuthServiceSendForgotPassword = new AuthServiceSendForgotPassword();
+  
+  constructor() {}
   
   async execute(email: string): Promise<void> {
     try {
