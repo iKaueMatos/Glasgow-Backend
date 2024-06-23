@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe';
 import { IDoctorRepository } from './IDoctorRepository';
-import { IDoctor } from '../../domain/model/IDoctor';
+import { IDoctor } from '../../domain/entities/interfaces/IDoctor';
 import { CreateDoctorDTO } from '../../application/dtos/CreateDoctorDTO';
 import prisma from '../prisma/client';
 import { LoggerService } from '../../../../core/services/Logger.Service';

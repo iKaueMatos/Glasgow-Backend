@@ -6,13 +6,13 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma-migrate-dev": "npx prisma migrate generate && npx prisma migrate deploy",
-    "start:dev": "nodemon src/app.ts",
+    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts -- --preserveWatchOutput",
     "start:prod": "NODE_ENV=production nodemon --exec ts-node src/app.ts",
     "start": "nodemon --exec ts-node src/app.ts",
     "start:debug": "NODE_ENV=development ts-node --inspect=0.0.0.0:9229 src/app.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kauê de Matos Oliveira",
   "license": "ISC",
   "description": "",
   "devDependencies": {

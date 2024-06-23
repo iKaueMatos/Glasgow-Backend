@@ -1,15 +1,13 @@
-import { IAddress } from '../../../../address/domain/model/IAddress';
-import { IPatient } from '../../../domain/model/IPatient';
-import { PatientRepository } from '../../../infra/repository/PatientRepository';
-import { PatientService } from '../../../domain/services/Patient.Service';
-import { UpdatePatientDTO } from '../../dtos/UpdatePatientDTO';
-import { resolve } from 'path';
 import { container } from 'tsyringe';
+import { UpdatePatientDTO } from '../../dtos/UpdatePatientDTO';
+import { PatientFiltersService } from '../../../domain/services/Patient.Filters.Service';
+import { IPatient } from '../../../domain/entities/interfaces/IPatient';
+import { PatientUpdateService } from '../../../domain/services/Patient.Update.Service';
 
 export class UpdatePatientUseCase {
   async execute(patientId: number, data: UpdatePatientDTO): Promise<UpdatePatientDTO | null> {
-    const patientService = container.resolve(PatientService);
-    const existingPatient = await patientService.getPatientById(patientId);
+    const patientFilterService = container.resolve(PatientFiltersService);
+    const existingPatient = await patientFilterService.getPatientById(patientId);
 
     if (!existingPatient) {
       throw new Error(`paciente com id: ${patientId} não foi encontrado!`);
@@ -25,6 +23,7 @@ export class UpdatePatientUseCase {
       address: data.address ?? existingPatient.address,
     };
 
-    return patientService.updatePatient(patientId, patientDataToUpdate);
+    const patientUpdateService = container.resolve(PatientUpdateService)
+    return patientUpdateService.updatePatient(patientId, patientDataToUpdate);
   }
 }

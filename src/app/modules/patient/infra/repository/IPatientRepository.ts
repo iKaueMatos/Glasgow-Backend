@@ -1,4 +1,4 @@
-import { IPatient } from "../../domain/model/IPatient";
+import { IPatient } from "../../domain/entities/interfaces/IPatient";
 import { CreatePatientDTO } from "../../application/dtos/CreatePatientDTO";
 import { UpdatePatientDTO } from "../../application/dtos/UpdatePatientDTO";
 

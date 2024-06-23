@@ -1,16 +1,10 @@
-import { IAddress } from "../../../domain/model/IAddress";
-import { AddressRepository } from "../../../infra/repositories/AddressRepository";
-import { AddressService } from "../../../domain/service/Address.Service";
+import { container } from "tsyringe";
+import { AddressDeleteService } from "../../../domain/services/Address.Delete.Service";
 
-export class DeleteAddressUseCase {
-  private addressService: AddressService
 
-  constructor() {
-    const addressRepository = new AddressRepository();
-    this.addressService = new AddressService(addressRepository)
-  }
-  
+export class DeleteAddressUseCase {  
   async execute(addressId: number): Promise<void> {
-    return this.addressService.deleteAddress(addressId);
+    const addressDeleteService = container.resolve(AddressDeleteService);
+    return addressDeleteService.deleteAddress(addressId);
   }
 }

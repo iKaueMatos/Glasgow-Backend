@@ -1,18 +1,12 @@
-import { IAddress } from "../../../domain/model/IAddress";
-import { AddressRepository } from "../../../infra/repositories/AddressRepository";
-import { AddressService } from "../../../domain/service/Address.Service";
+import { IAddress } from "../../../domain/entities/interfaces/IAddress";
+import { AddressCreatedService } from "../../../domain/services/Address.Created.Service";
 import { CreateAddressDTO } from "../../dtos/CreatedAddressDTO";
+import { container } from "tsyringe";
 
 export class CreatedAddressUseCase {
-  private addressService: AddressService
-
-  constructor() {
-    const addressRepository = new AddressRepository();
-    this.addressService = new AddressService(addressRepository)
-  }
-
   async execute(data: IAddress): Promise<CreateAddressDTO> {
-    const createdAddress: CreateAddressDTO = await this.addressService.createAddress(data);
+    const addressCreatedService = container.resolve(AddressCreatedService);
+    const createdAddress: CreateAddressDTO = await addressCreatedService.createAddress(data);
     return createdAddress;
   }
 }

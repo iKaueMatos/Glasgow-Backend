@@ -1,32 +1,80 @@
 import "reflect-metadata";
 import { container } from 'tsyringe';
+
 import { IDoctorRepository } from '../../../modules/doctor/infra/repository/IDoctorRepository';
 import { DoctorRepository } from '../../../modules/doctor/infra/repository/DoctorRepository';
-import { DoctorService } from '../../../modules/doctor/domain/service/Doctor.Service';
 import { DoctorCreatedUseCase } from '../../../modules/doctor/application/useCase/createdDoctor/DoctorCreatedUseCase';
-import { DoctorCreatedController } from "../../../modules/doctor/application/useCase/createdDoctor/DoctorCreatedController";
+import { DoctorCreatedController } from "../../../modules/doctor/interfaces/http/controller/DoctorCreatedController";
 import { IPatientRepository } from "../../../modules/patient/infra/repository/IPatientRepository";
 import { PatientRepository } from "../../../modules/patient/infra/repository/PatientRepository";
-import { PatientService } from "../../../modules/patient/domain/services/Patient.Service";
 import { CreatedPatientUseCase } from "../../../modules/patient/application/useCase/CreatedPatient/CreatedPatientUseCase";
-import { CreatedPatientController } from "../../../modules/patient/application/useCase/CreatedPatient/CreatedPatientController";
-import { IUserRepository } from "../../../modules/user/infra/infra/repository/IUserRepository";
-import { UserRepository } from "../../../modules/user/infra/infra/repository/UserRepository";
-import { AutheticateCreatedUserController } from "../../../modules/auth/application/useCases/createUser/AuthenticateCreatedUserController";
-import { AutheticateUserUseCase } from "../../../modules/auth/application/useCases/createUser/AutheticateCreatedUserUseCase";
-import { UserRepositoryToken } from "../../../modules/user/infra/infra/repository/UserRepositoryToken";
+import { IUserRepository } from "../../../modules/user/infra/repository/IUserRepository";
+import { UserRepository } from "../../../modules/user/infra/repository/UserRepository";
+import { UserCreatedUseCase } from "../../../modules/user/application/useCases/userCreated/UserCreatedUseCase";
+import { UserRepositoryToken } from "../../../modules/user/infra/repository/UserRepositoryToken";
+import { IPatientServiceCreated } from "../../../modules/patient/application/services/IPatient.Created.Service";
+import { PatientCreatedService } from "../../../modules/patient/domain/services/Patient.Created.Service";
+import { IPatientFiltersService } from "../../../modules/patient/application/services/IPatient.Filters.Service";
+import { PatientFiltersService } from "../../../modules/patient/domain/services/Patient.Filters.Service";
+import { IPatientServiceUpdate } from "../../../modules/patient/application/services/IPatient.Update.Service";
+import { PatientUpdateService } from "../../../modules/patient/domain/services/Patient.Update.Service";
+import { AddressUpdateService } from "../../../modules/address/domain/services/Address.Update.Service";
+import { IAddressUpdateService } from "../../../modules/address/application/services/IAddress.Update.Service";
+import { IAddressCreatedService } from "../../../modules/address/application/services/IAddress.Created.Service";
+import { AddressCreatedService } from '../../../modules/address/domain/services/Address.Created.Service';
+import { IAddressDeleteService } from "../../../modules/address/application/services/IAddress.Delete.Service";
+import { AddressDeleteService } from "../../../modules/address/domain/services/Address.Delete.Service";
+import { IAddressFiltersService } from "../../../modules/address/application/services/IAddress.Filters.Service";
+import { AddressFiltersService } from "../../../modules/address/domain/services/Address.Filters.Service";
+import { AddressRepository } from "../../../modules/address/infra/repositories/AddressRepository";
+import { IAddressRepository } from "../../../modules/address/infra/repositories/IAddressRepository";
+import { IUserRepositoryToken } from "../../../modules/user/infra/repository/IUserRepositoryToken";
+import { IAuthAutheticateUserService } from "../../../modules/user/application/services/IAuthAutheticateUser.Service";
+import { AuthAutheticateUserService } from "../../../modules/user/domain/services/AuthAutheticateUser.Service";
+import { IAuthResetPasswordService } from "../../../modules/user/application/services/IAuthResetPassword.Service";
+import { AuthResetPasswordService } from "../../../modules/user/domain/services/AuthResetPassword.Service";
+import { UserCreatedService } from "../../../modules/user/domain/services/User.Service";
+import { UpdatePatientUseCase } from "../../../modules/patient/application/useCase/UpdatePatient/UpdatePatientUseCase";
+import { ListPatientsUseCase } from "../../../modules/patient/application/useCase/ListPatients/ListPatientsUseCase";
+import { AuthServiceSendForgotPassword } from "@modules/user/domain/services/AuthSendForgotPassword.Service";
+import { RefreshTokenUseCase } from "@modules/user/application/useCases/refleshToken/RefreshTokenUseCase";
+import { DeleteAddressUseCase } from "@modules/address/application/useCase/DeleteAddress/DeleteAddressUseCase";
+import { GetAddressByIdUseCase } from "@modules/address/application/useCase/GetAddressById/GetAddressByIdUseCase";
+import { CreatedAddressUseCase } from "@modules/address/application/useCase/CreatedAddress/CreatedAddressUseCase";
+import { GetAllAddressesUseCase } from "@modules/address/application/useCase/GetAllAddress/GetAllAddressUseCase";
+import { IDoctorCreatedService } from "@modules/doctor/application/services/IDoctor.Created.Service";
+import { DoctorCreatedService } from "@modules/doctor/domain/services/Doctor.Created.Service";
 
 container.registerSingleton<IDoctorRepository>('DoctorRepository', DoctorRepository);
-container.registerSingleton<DoctorService>('DoctorService', DoctorService);
 container.registerSingleton<DoctorCreatedUseCase>('DoctorCreatedUseCase', DoctorCreatedUseCase);
-container.registerSingleton<DoctorCreatedController>('DoctorCreatedController', DoctorCreatedController);
+container.registerSingleton<IDoctorCreatedService>('DoctorCreatedService', DoctorCreatedService);
 
 container.registerSingleton<IPatientRepository>('PatientRepository', PatientRepository);
-container.registerSingleton<PatientService>('PatientService', PatientService);
+container.registerSingleton<IPatientServiceCreated>('PatientServiceCreated', PatientCreatedService);
+container.registerSingleton<IPatientFiltersService>('PatientFiltersService', PatientFiltersService);
+container.registerSingleton<IPatientServiceUpdate>('PatientUpdateServce', PatientUpdateService);
+
 container.registerSingleton<CreatedPatientUseCase>('CreatePatientUseCase', CreatedPatientUseCase);
-container.registerSingleton<CreatedPatientController>('CreatePatientController', CreatedPatientController);
+container.registerSingleton<UpdatePatientUseCase>('UpdatePatientUseCase', UpdatePatientUseCase);
+container.registerSingleton<ListPatientsUseCase>('ListPatientsUseCase', ListPatientsUseCase);
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
-container.registerSingleton<UserRepositoryToken>('UserRepositoryToken', UserRepositoryToken);
-container.registerSingleton<AutheticateCreatedUserController>('AutheticateCreatedUserController', AutheticateCreatedUserController);
-container.registerSingleton<AutheticateUserUseCase>('AutheticateUserUseCase', AutheticateUserUseCase);
+container.registerSingleton<IUserRepositoryToken>('UserRepositoryToken', UserRepositoryToken);
+container.registerSingleton<UserCreatedService>('UserCreatedService', UserCreatedService);
+container.registerSingleton<UserCreatedUseCase>('UserCreatedUseCase', UserCreatedUseCase);
+
+container.registerSingleton<IAuthAutheticateUserService>('AuthAutheticateUserService',AuthAutheticateUserService);
+container.registerSingleton<IAuthAutheticateUserService>('AuthAutheticateUserService', AuthAutheticateUserService);
+container.registerSingleton<IAuthResetPasswordService>('IAuthResetPasswordService', AuthResetPasswordService)
+container.registerSingleton<AuthServiceSendForgotPassword>('AuthServiceSendForgotPassword', AuthServiceSendForgotPassword);
+container.registerSingleton<RefreshTokenUseCase>('RefreshTokenUseCase', RefreshTokenUseCase);
+
+container.registerSingleton<IAddressUpdateService>('AddressUpdateService', AddressUpdateService);
+container.registerSingleton<IAddressCreatedService>('AddressCreatedService', AddressCreatedService);
+container.registerSingleton<IAddressDeleteService>('AddressDeleteService', AddressDeleteService);
+container.registerSingleton<IAddressFiltersService>('AddressFiltersService', AddressFiltersService);
+container.registerSingleton<IAddressRepository>('AddressRepository', AddressRepository);
+container.registerSingleton<DeleteAddressUseCase>('DeleteAddressUseCase', DeleteAddressUseCase);
+container.registerSingleton<GetAddressByIdUseCase>('GetAddressByIdUseCase', GetAddressByIdUseCase);
+container.registerSingleton<CreatedAddressUseCase>('CreatedAddressUseCase', CreatedAddressUseCase);
+container.registerSingleton<GetAllAddressesUseCase>('GetAllAddressesUseCase', GetAllAddressesUseCase);

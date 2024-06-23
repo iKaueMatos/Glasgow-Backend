@@ -1,4 +1,4 @@
-import { IPatient } from "../../../patient/domain/model/IPatient";
+import { IPatient } from "../../../patient/domain/entities/interfaces/IPatient";
 import { TypeMeasurement } from "../enum/TypeMeasurent";
 
 export interface IMeasurement {

@@ -1,5 +1,5 @@
 import { IMedication } from "../../../medication/domain/model/IMedication";
-import { IPatient } from "../../../patient/domain/model/IPatient";
+import { IPatient } from "../../../patient/domain/entities/interfaces/IPatient";
 
 export interface IPrescription {
   id: number;
