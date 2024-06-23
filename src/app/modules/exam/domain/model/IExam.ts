@@ -1,4 +1,4 @@
-import { IPatient } from "../patient/domain/model/IPatient";
+import { IPatient } from "../../../patient/domain/model/IPatient";
 
 export interface IExam {
   id: number;

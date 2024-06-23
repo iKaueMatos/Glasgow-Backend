@@ -1,17 +1,15 @@
 import { IPatient } from "../../../domain/model/IPatient";
 import { PatientRepository } from "../../../infra/repository/PatientRepository";
-import { PatientService } from "../../../domain/services/PatientService";
+import { PatientService } from "../../../domain/services/Patient.Service";
 import { CreatePatientDTO } from "../../dtos/CreatePatientDTO";
+import { LoggerService } from "../../../../../core/services/Logger.Service";
+import { container } from "tsyringe";
 
 export class CreatedPatientUseCase {
-  private patientService: PatientService;
-
-  constructor() {
-    const patientRepository = new PatientRepository();
-    this.patientService = new PatientService(patientRepository);
-  }
+  protected loggerService: LoggerService = new LoggerService();
 
   async execute(data: CreatePatientDTO): Promise<IPatient> {
-    return this.patientService.createPatient(data);
+    const patientService : PatientService = container.resolve(PatientService);
+    return patientService.createPatient(data);
   }
 }

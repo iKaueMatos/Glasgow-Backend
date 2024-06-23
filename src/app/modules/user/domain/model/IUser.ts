@@ -5,13 +5,11 @@ import { IUserToken } from "./IUserToken";
 export interface IUser {
   id: number;
   name: string;
-  email?: string;
-  password?: string;
-  driverLicense?: string;
-  isAdmin?: boolean;
-  avatar?: string | undefined;
-  created_at?: Date;
-  
+  email: string;
+  password: string;
+  isAdmin: boolean;
+  avatar: string | null;
+  created_at: Date;
   patients?: IPatient[];
   consultations?: IConsultation[];
   userTokens?: IUserToken[];

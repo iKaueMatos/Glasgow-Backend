@@ -1,4 +1,4 @@
-import { IMedication } from "./IMedication";
+import { IMedication } from "../../../medication/domain/model/IMedication";
 import { IPatient } from "../../../patient/domain/model/IPatient";
 
 export interface IPrescription {

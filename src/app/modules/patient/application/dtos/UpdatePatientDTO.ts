@@ -1,9 +1,9 @@
 import { IAddress } from "../../../address/domain/model/IAddress";
-import { IConsultation } from "../../../models/IConsultation";
+import { IConsultation } from "../../../consultation/domain/model/IConsultation";
 import { IDoctor } from "../../../doctor/domain/model/IDoctor";
-import { IExam } from "../../../models/IExam";
+import { IExam } from "../../../exam/domain/model/IExam";
 import { IMeasurement } from "../../../measurement/domain/model/IMeasurement";
-import { IPatientCondition } from "../../../models/IPatientCondition";
+import { IPatientCondition } from "../../../patientCondition/domain/model/IPatientCondition";
 import { IPrescription } from "../../../prescription/domain/model/IPrescription";
 
 export interface UpdatePatientDTO {

@@ -1,6 +1,5 @@
-import { IMedicalCondition } from "./IMedicationCondition";
-import { IPatient } from './IPatient'
-
+import { IMedicalCondition } from "../../../medicationCodition/domain/model/IMedicationCondition";
+import { IPatient } from "../../../patient/domain/model/IPatient";
 
 export interface IPatientCondition {
   id: number;

@@ -4,10 +4,23 @@ import { CreatePatientDTO } from "../../application/dtos/CreatePatientDTO";
 import { UpdatePatientDTO } from "../../application/dtos/UpdatePatientDTO";
 import prisma from "../../../notification/infra/prisma/client";
 import { CustomException } from "../../../../shared/exceptions/CustomException";
+import { LoggerService } from "../../../../core/services/Logger.Service";
 
 export class PatientRepository {
+  private loggerService: LoggerService = new LoggerService();
+
+  constructor() {}
+
   async createPatient(data: CreatePatientDTO): Promise<IPatient> {
     try {
+      const existingDoctor = await prisma.doctor.findUnique({
+        where: { id: data.doctorId },
+      });
+
+      if (!existingDoctor) {
+        throw new CustomException('Erro', 'Médico não encontrado');
+      }
+
       const patientData: Prisma.PatientCreateInput = {
         name: data.name,
         cpf: data.cpf,
@@ -25,10 +38,12 @@ export class PatientRepository {
           },
         },
         doctor: {
-            connect: { id: data.doctorId },
+          connect: { id: data.doctorId },
         },
       };
-  
+
+      this.loggerService.info(`Iniciando criação do paciente: ${data.name}`);
+
       const patient = await prisma.patient.create({
         data: patientData,
         include: {
@@ -36,12 +51,17 @@ export class PatientRepository {
           doctor: true,
         },
       });
-  
+
+      this.loggerService.info(`Paciente criado com sucesso: ${patient.name}`);
+
       return patient as unknown as IPatient;
-    } catch (error) {
-      throw new CustomException("Erro", "falha ao criar o paciente", String(error));
+    } catch (error: any) {
+      this.loggerService.error(`Erro ao criar o paciente: ${error.message}`);
+      throw new CustomException("Exception", String(error));
     }
   }
+
+   
 
   async findById(patientId: number): Promise<IPatient | null> {
     const patient = await prisma.patient.findUnique({
