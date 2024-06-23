@@ -25,6 +25,7 @@ model User {
   isAdmin    Boolean  @default(false)
   avatar     String?
   created_at DateTime @default(now())
+  phone      String   @unique @db.VarChar(11)
 
   patients      Patient[]
   consultations Consultation[]

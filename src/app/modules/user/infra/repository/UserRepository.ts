@@ -28,6 +28,7 @@ export class UserRepository implements IUserRepository {
       isAdmin: data.isAdmin,
       avatar: null,
       created_at: new Date(),
+      phone: data.phone
     };
   
     try {
@@ -37,7 +38,7 @@ export class UserRepository implements IUserRepository {
       
       return user as IUser;
     } catch (error) {
-      throw new CustomException("Erro", "Ocorreu um erro ao processar a requisição para criar o usuário!")
+      throw new CustomException("Erro", "Ocorreu um erro ao processar a requisição para criar o usuário!", `${error}`);
     } finally {
       await prisma.$disconnect();
     }

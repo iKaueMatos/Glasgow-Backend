@@ -4,6 +4,13 @@ import { router } from './app/index'
 import { AppError } from './app/core/exceptions/AppError';
 
 const app = express();
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(router);
