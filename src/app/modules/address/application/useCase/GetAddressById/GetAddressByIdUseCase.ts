@@ -1,16 +1,10 @@
-import { IAddress } from "../../../domain/model/IAddress";
-import { AddressRepository } from "../../../infra/repositories/AddressRepository";
-import { AddressService } from "../../../domain/service/Address.Service";
+import { container } from "tsyringe";
+import { IAddress } from "../../../domain/entities/interfaces/IAddress";
+import { AddressFiltersService } from "../../../domain/services/Address.Filters.Service";
 
 export class GetAddressByIdUseCase {
-  private addressService: AddressService
-
-  constructor() {
-    const addressRepository = new AddressRepository();
-    this.addressService = new AddressService(addressRepository)
-  }
-
   async execute(addressId: number): Promise<IAddress | null> {
-    return this.addressService.getAddressById(addressId);
+    const getByIdAddress = container.resolve(AddressFiltersService)
+    return getByIdAddress.getAddressById(addressId);
   }
 }

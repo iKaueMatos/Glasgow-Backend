@@ -1,4 +1,4 @@
-import { IAddress } from "../../domain/model/IAddress";
+import { IAddress } from "../../domain/entities/interfaces/IAddress";
 
 export interface IAddressRepository {
   createAddress(data: IAddress): Promise<IAddress>;

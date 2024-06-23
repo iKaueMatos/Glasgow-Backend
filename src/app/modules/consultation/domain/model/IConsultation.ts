@@ -1,5 +1,5 @@
-import { IDoctor } from "../../../doctor/domain/model/IDoctor";
-import { IPatient } from "../../../patient/domain/model/IPatient";
+import { IDoctor } from "../../../doctor/domain/entities/interfaces/IDoctor";
+import { IPatient } from "../../../patient/domain/entities/interfaces/IPatient";
 
 export interface IConsultation {
   id: number;

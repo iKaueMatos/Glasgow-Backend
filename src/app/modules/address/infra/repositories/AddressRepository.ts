@@ -1,4 +1,4 @@
-import { IAddress } from "../../domain/model/IAddress";
+import { IAddress } from "../../domain/entities/interfaces/IAddress";
 import prisma from "../prisma/client";
 import { IAddressRepository } from "./IAddressRepository";
 

@@ -1,6 +1,6 @@
-import { IAddress } from "../../../address/domain/model/IAddress";
+import { IAddress } from "../../../address/domain/entities/interfaces/IAddress";
 import { IConsultation } from "../../../consultation/domain/model/IConsultation";
-import { IDoctor } from "../../../doctor/domain/model/IDoctor";
+import { IDoctor } from "../../../doctor/domain/entities/interfaces/IDoctor";
 import { IExam } from "../../../exam/domain/model/IExam";
 import { IMeasurement } from "../../../measurement/domain/model/IMeasurement";
 import { IPatientCondition } from "../../../patientCondition/domain/model/IPatientCondition";
