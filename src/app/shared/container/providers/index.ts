@@ -4,7 +4,6 @@ import { container } from 'tsyringe';
 import { IDoctorRepository } from '../../../modules/doctor/infra/repository/IDoctorRepository';
 import { DoctorRepository } from '../../../modules/doctor/infra/repository/DoctorRepository';
 import { DoctorCreatedUseCase } from '../../../modules/doctor/application/useCase/createdDoctor/DoctorCreatedUseCase';
-import { DoctorCreatedController } from "../../../modules/doctor/interfaces/http/controller/DoctorCreatedController";
 import { IPatientRepository } from "../../../modules/patient/infra/repository/IPatientRepository";
 import { PatientRepository } from "../../../modules/patient/infra/repository/PatientRepository";
 import { CreatedPatientUseCase } from "../../../modules/patient/application/useCase/CreatedPatient/CreatedPatientUseCase";
@@ -36,14 +35,17 @@ import { AuthResetPasswordService } from "../../../modules/user/domain/services/
 import { UserCreatedService } from "../../../modules/user/domain/services/User.Service";
 import { UpdatePatientUseCase } from "../../../modules/patient/application/useCase/UpdatePatient/UpdatePatientUseCase";
 import { ListPatientsUseCase } from "../../../modules/patient/application/useCase/ListPatients/ListPatientsUseCase";
-import { AuthServiceSendForgotPassword } from "@modules/user/domain/services/AuthSendForgotPassword.Service";
-import { RefreshTokenUseCase } from "@modules/user/application/useCases/refleshToken/RefreshTokenUseCase";
-import { DeleteAddressUseCase } from "@modules/address/application/useCase/DeleteAddress/DeleteAddressUseCase";
-import { GetAddressByIdUseCase } from "@modules/address/application/useCase/GetAddressById/GetAddressByIdUseCase";
-import { CreatedAddressUseCase } from "@modules/address/application/useCase/CreatedAddress/CreatedAddressUseCase";
-import { GetAllAddressesUseCase } from "@modules/address/application/useCase/GetAllAddress/GetAllAddressUseCase";
-import { IDoctorCreatedService } from "@modules/doctor/application/services/IDoctor.Created.Service";
-import { DoctorCreatedService } from "@modules/doctor/domain/services/Doctor.Created.Service";
+import { AuthServiceSendForgotPassword } from "../../../modules/user/domain/services/AuthSendForgotPassword.Service";
+import { RefreshTokenUseCase } from "../../../modules/user/application/useCases/refleshToken/RefreshTokenUseCase";
+import { DeleteAddressUseCase } from "../../../modules/address/application/useCase/DeleteAddress/DeleteAddressUseCase";
+import { GetAddressByIdUseCase } from "../../../modules/address/application/useCase/GetAddressById/GetAddressByIdUseCase";
+import { CreatedAddressUseCase } from "../../../modules/address/application/useCase/CreatedAddress/CreatedAddressUseCase";
+import { GetAllAddressesUseCase } from "../../../modules/address/application/useCase/GetAllAddress/GetAllAddressUseCase";
+import { IDoctorCreatedService } from "../../../modules/doctor/application/services/IDoctor.Created.Service";
+import { DoctorCreatedService } from "../../../modules/doctor/domain/services/Doctor.Created.Service";
+import { IChatGptService } from "../../../modules/chatgpt/application/service/IChatGPT.Service";
+import { ChatGptService } from "../../../modules/chatgpt/domain/service/ChatGPT.Service";
+import { ChatGptUseCase } from "../../../modules/chatgpt/application/useCases/ChatGPTUsecase";
 
 container.registerSingleton<IDoctorRepository>('DoctorRepository', DoctorRepository);
 container.registerSingleton<DoctorCreatedUseCase>('DoctorCreatedUseCase', DoctorCreatedUseCase);
@@ -78,3 +80,7 @@ container.registerSingleton<DeleteAddressUseCase>('DeleteAddressUseCase', Delete
 container.registerSingleton<GetAddressByIdUseCase>('GetAddressByIdUseCase', GetAddressByIdUseCase);
 container.registerSingleton<CreatedAddressUseCase>('CreatedAddressUseCase', CreatedAddressUseCase);
 container.registerSingleton<GetAllAddressesUseCase>('GetAllAddressesUseCase', GetAllAddressesUseCase);
+
+
+container.registerSingleton<IChatGptService>('ChatGptService', ChatGptService);
+container.registerSingleton<ChatGptUseCase>('ChatGptUseCase', ChatGptUseCase);
