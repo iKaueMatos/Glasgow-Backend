@@ -43,7 +43,7 @@ Liste todos os pré-requisitos necessários para rodar o projeto localmente, com
 
 ### Instalação
 
-1. Clone o repositório: `git clone https://github.com/iKaueMatos/Glasgow`
+1. Clone o repositório: `git clone https://github.com/iKaueMatos/Glasgow-Backend/edit/glasdow.V.1.0.1`
 2. Instale as dependências: `npm install`
 
 ### Executando o Projeto
