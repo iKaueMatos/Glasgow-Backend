@@ -1,4 +1,4 @@
-# Projeto Glasgow
+# Projeto Glasgow Back-end 🧠
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/iKaueMatos/Glasgow)](https://github.com/iKaueMatos/Glasgow/issues)
