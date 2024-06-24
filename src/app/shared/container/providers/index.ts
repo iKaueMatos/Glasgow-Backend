@@ -29,7 +29,7 @@ import { AddressRepository } from "../../../modules/address/infra/repositories/A
 import { IAddressRepository } from "../../../modules/address/infra/repositories/IAddressRepository";
 import { IUserRepositoryToken } from "../../../modules/user/infra/repository/IUserRepositoryToken";
 import { IAuthAutheticateUserService } from "../../../modules/user/application/services/IAuthAutheticateUser.Service";
-import { AuthAutheticateUserService } from "../../../modules/user/domain/services/AuthAutheticateUser.Service";
+import { AuthAuthenticateUserService } from "../../../modules/user/domain/services/AuthAutheticateUser.Service";
 import { IAuthResetPasswordService } from "../../../modules/user/application/services/IAuthResetPassword.Service";
 import { AuthResetPasswordService } from "../../../modules/user/domain/services/AuthResetPassword.Service";
 import { UserCreatedService } from "../../../modules/user/domain/services/User.Service";
@@ -65,8 +65,7 @@ container.registerSingleton<IUserRepositoryToken>('UserRepositoryToken', UserRep
 container.registerSingleton<UserCreatedService>('UserCreatedService', UserCreatedService);
 container.registerSingleton<UserCreatedUseCase>('UserCreatedUseCase', UserCreatedUseCase);
 
-container.registerSingleton<IAuthAutheticateUserService>('AuthAutheticateUserService',AuthAutheticateUserService);
-container.registerSingleton<IAuthAutheticateUserService>('AuthAutheticateUserService', AuthAutheticateUserService);
+container.registerSingleton<IAuthAutheticateUserService>('AuthAuthenticateUserService',AuthAuthenticateUserService);
 container.registerSingleton<IAuthResetPasswordService>('IAuthResetPasswordService', AuthResetPasswordService)
 container.registerSingleton<AuthServiceSendForgotPassword>('AuthServiceSendForgotPassword', AuthServiceSendForgotPassword);
 container.registerSingleton<RefreshTokenUseCase>('RefreshTokenUseCase', RefreshTokenUseCase);

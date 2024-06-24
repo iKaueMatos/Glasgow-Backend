@@ -12,7 +12,8 @@
     "start:debug": "NODE_ENV=development ts-node --inspect=0.0.0.0:9229 src/app.ts"
   },
   "keywords": [],
-  "author": "Kauê de Matos Oliveira",
+  "author":"Kauê de matos oliveira",
+  "email":"ikauedeveloper@gmail.com",
   "license": "ISC",
   "description": "",
   "devDependencies": {
