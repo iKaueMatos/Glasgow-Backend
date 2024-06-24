@@ -6,7 +6,14 @@
 
 ## Visão Geral
 
-(Em Desenvolvimento)
+PrimárIA é um software web e mobile de atenção primária à saúde, destinado a ajudar
+pacientes no acompanhamento de doenças crônicas, exames, receitas, alimentação, e
+alertas de saúde, melhorando assim a conscientização da prevenção. Inclui uma IA
+integrada com banco de dados de saúde que tenha acesso ao histórico médico, responda
+dúvidas e forneça informações importantes sobre qual é o local correto para buscar
+atendimento de acordo com a gravidade e evitar filas desnecessárias, centralizando tudo
+em um só lugar. Além disso, será integrado com o WhatsApp através de um chatbot com
+IA para oferecer suporte e informações diretamente pelo aplicativo de mensagens.
 
 ## Tecnologias Utilizadas
 
