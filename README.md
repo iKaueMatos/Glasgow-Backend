@@ -23,6 +23,10 @@ IA para oferecer suporte e informações diretamente pelo aplicativo de mensagen
 - Docker
 - MySQL
 
+## Documentação da API
+
+link: [visualizar](https://documenter.getpostman.com/view/32899753/2sA3XY8JPA)
+
 ## Pré-requisitos 💡
 
 1. Docker
