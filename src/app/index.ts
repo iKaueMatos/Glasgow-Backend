@@ -5,6 +5,8 @@ import patientRouter from './modules/patient/interfaces/http/routes/patient.rout
 import addressRouter from './modules/address/interfaces/http/routes/address.routes';
 import doctorRouter from './modules/doctor/interfaces/http/routes/doctor.routes';
 import authRouter from './modules/user/interfaces/routes/auth.routes';
+import interactionRouter from './modules/Interaction/interfaces/http/routes/interaction.routes';
+
 const router = Router();
 
 router.use('/welcome', welcomeRouter);
@@ -12,5 +14,6 @@ router.use('/patient', patientRouter);
 router.use('/patient/address', addressRouter);
 router.use('/doctor/', doctorRouter);
 router.use('/user/', authRouter)
+router.use('/interaction/', interactionRouter)
 
 export { router }

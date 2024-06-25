@@ -1,19 +1,24 @@
 import { Request, Response } from "express";
 import { CreatedInteractionUseCase } from "../../../application/useCase/CreatedInteraction/CreatedInteractionUseCase";
-import { InteractionRepository } from "../../../infra/prisma/repositories/InteractionRepository";
 import { CustomException } from "../../../../../shared/exceptions/CustomException";
+import { container } from "tsyringe";
 
 export class CreatedInteractionController {
   static async handle(req: Request, res: Response): Promise<void> {
     try {
       const { patientId, question } = req.body;
-      const interactionRepository = new InteractionRepository();
-      const createdInteractionUseCase = new CreatedInteractionUseCase(
-        interactionRepository,
-      );
 
+      if (!patientId || !question) {
+           res.status(400).json({
+          message: "ID do paciente e pergunta são obrigatórios",
+        });
+        return;
+      }
+
+      const patientIdStr = Number(patientId);
+      const createdInteractionUseCase = container.resolve(CreatedInteractionUseCase)
       const interaction = await createdInteractionUseCase.execute({
-        patientId,
+        patientId: patientIdStr,
         question,
       });
 

@@ -1,21 +1,17 @@
 import OpenAI from "openai";
 import { Iinteraction } from "../../../domain/entities/interfaces/IInteraction";
 import { CreateInteractionDTO } from "../../dtos/CreateInteractionDTO";
-import { IInteractionRepository } from "../../../infra/prisma/repositories/IInteractionRepository";
 import { CustomException } from "../../../../../shared/exceptions/CustomException";
+import { InteractionRepository } from "../../../infra/prisma/repositories/InteractionRepository";
+import { container } from "tsyringe";
 
 const openai = new OpenAI({
   apiKey: process.env.API_KEY,
 });
 
 export class CreatedInteractionUseCase {
-  private interactionRepository: IInteractionRepository;
-
-  constructor(interactionRepository: IInteractionRepository) {
-    this.interactionRepository = interactionRepository;
-  }
-
   async execute(data: Iinteraction): Promise<CreateInteractionDTO> {
+    const interactionRepository = container.resolve(InteractionRepository);
     const question = data.question;
     const timestamp = new Date();
     const completion = await openai.chat.completions.create({
@@ -37,7 +33,7 @@ export class CreatedInteractionUseCase {
     };
 
     const interaction =
-      await this.interactionRepository.createInteraction(interactionData);
+      await interactionRepository.createInteraction(interactionData);
 
     return interaction;
   }

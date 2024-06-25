@@ -46,6 +46,9 @@ import { DoctorCreatedService } from "../../../modules/doctor/domain/services/Do
 import { IChatGptService } from "../../../modules/chatgpt/application/service/IChatGPT.Service";
 import { ChatGptService } from "../../../modules/chatgpt/domain/service/ChatGPT.Service";
 import { ChatGptUseCase } from "../../../modules/chatgpt/application/useCases/ChatGPTUsecase";
+import { IInteractionRepository } from "../../../modules/Interaction/infra/prisma/repositories/IInteractionRepository";
+import { InteractionRepository } from "../../../modules/Interaction/infra/prisma/repositories/InteractionRepository";
+import { CreatedInteractionUseCase } from "../../../modules/Interaction/application/useCase/CreatedInteraction/CreatedInteractionUseCase";
 
 container.registerSingleton<IDoctorRepository>('DoctorRepository', DoctorRepository);
 container.registerSingleton<DoctorCreatedUseCase>('DoctorCreatedUseCase', DoctorCreatedUseCase);
@@ -80,6 +83,8 @@ container.registerSingleton<GetAddressByIdUseCase>('GetAddressByIdUseCase', GetA
 container.registerSingleton<CreatedAddressUseCase>('CreatedAddressUseCase', CreatedAddressUseCase);
 container.registerSingleton<GetAllAddressesUseCase>('GetAllAddressesUseCase', GetAllAddressesUseCase);
 
-
 container.registerSingleton<IChatGptService>('ChatGptService', ChatGptService);
 container.registerSingleton<ChatGptUseCase>('ChatGptUseCase', ChatGptUseCase);
+
+container.registerSingleton<IInteractionRepository>('InteractionRepository', InteractionRepository);
+container.registerSingleton<CreatedInteractionUseCase>('CreatedInteractionUseCase', CreatedInteractionUseCase)

@@ -3,6 +3,6 @@ import { CreatedInteractionController } from "../controller/createdInteractionCo
 
 const router = Router();
 
-router.post("/question", CreatedInteractionController.handle);
+router.post("/question", (req, res) => CreatedInteractionController.handle(req, res));
 
 export default router;
