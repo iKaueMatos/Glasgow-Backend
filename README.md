@@ -50,17 +50,21 @@ link: [visualizar](https://documenter.getpostman.com/view/32899753/2sA3XY8JPA)
 1. Clone o repositório: `git clone https://github.com/iKaueMatos/Glasgow-Backend/edit/glasdow.V.1.0.1`
 2. Instale as dependências: `npm install`
 
-### Executando o Projeto ⚙️
-
-- **Desenvolvimento**: `npm run start:dev`
-- **Produção**: `npm run start:prod`
-
 ### Docker 🐳
 
 Para rodar o projeto com Docker:
 
+**Atenção: ** rodando o projeto com docker todo o ambiente do back-end irar ser inicializado de maneira simultanea, possibilitando fazer requisições para API.
+
 1. Instale o Docker e o Docker Compose
 2. Execute: `docker-compose up`
+
+### Executando o Projeto sem o Docker ⚙️
+
+Atenção: rodando o projeto sem a utilização do docker sera necessário instalar um SGBD na própria maquina. 
+
+- **Desenvolvimento**: `npm run start:dev`
+- **Produção**: `npm run start:prod`
 
 ## Licença
 Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
